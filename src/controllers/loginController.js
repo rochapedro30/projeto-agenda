@@ -13,14 +13,14 @@ exports.register = async function(req, res) {
     if(login.errors.length > 0) {
         req.flash('errors', login.errors);
         req.session.save(function() {
-        return res.redirect('/login/index');
+        return res.redirect('back');
         });
         return;
     }
 
     req.flash('success', 'Seu usuário foi criado com sucesso!');
     req.session.save(function() {
-        return res.redirect('/login/index');
+        return res.redirect('back');
     }); 
     } catch (e) {
         console.log(e);
@@ -36,7 +36,7 @@ exports.login = async function(req, res) {
     if(login.errors.length > 0) {
         req.flash('errors', login.errors);
         req.session.save(function() {
-        return res.redirect('/login/index');
+        return res.redirect('back');
         });
         return;
     }
@@ -44,7 +44,7 @@ exports.login = async function(req, res) {
     req.flash('success', 'você entrou no sistema');
     req.session.user = login.user;
     req.session.save(function() {
-        return res.redirect('/login/index');
+        return res.redirect('back');
     }); 
     } catch (e) {
         console.log(e);
